@@ -1,17 +1,18 @@
-// stem_hal.h
-// Earlier this year
+// Changed the  hardware abstraction layer header file stem_hal.h to stemhal.h
+// 
 // Jan 24
 
-// You uploaded an item
-// C
-// stem_hal.h
+h
 /*
  * Author             - Niwantha Meepage
  * Comapany           - Algobel Technologies & Innovations 
  * Created Date       - 4 Nov 2019
- * Edited             - 5 Dec 2019
+ * Previous Edite     - 5 Dec 2019
+ * Last Edit          - 9 Aug 2020
  * 
  */
+
+// ADC2 can not use while on WiFi 
 
  // I2C Communication Pins 
 /*
@@ -39,9 +40,17 @@
  *  32  - DC/A0 GPIO32, XTAL_32K_P (32.768 kHz crystal oscillator input), ADC1_CH4,TOUCH9, RTC_GPIO9
  *  33  - RESET GPIO33, XTAL_32K_N (32.768 kHz crystal oscillator output),ADC1_CH5, TOUCH8, RTC_GPIO8
  *  27  - CS    GPIO27, ADC2_CH7, TOUCH7, RTC_GPIO17, EMAC_RX_DV
- *  18  - CLK  (D11) **********************************************This D9 pin will engaged when display "ON or USE"*************************
- *  23  - MOSI (D9) **********************************************This D9 pin will engaged when display "ON or USE"*************************
+ *  18  - CLK
+ *  23  - MOSI
 */
+
+// DISPLAY PINS FOR THE BOARD 
+// Recommended not to use following pins when directly using the stem display 
+
+#define CD  32
+#define CS  27
+#define RESET 33
+
 
 #define LED_BUILTIN (0)// GPIO0, ADC2_CH1, TOUCH1, RTC_GPIO11, CLK_OUT1,EMAC_TX_CLK
 
@@ -71,9 +80,9 @@
 //Second Segment - Sector -02 (Voltage (*5v or 3.3V) can be selected by using D8-11 Jumper
 
 #define D8      (5)//I/O  GPIO5, VSPICS0, HS1_DATA6, EMAC_RX_CLK
-#define D9      (23)//I/O GPIO23, VSPID, HS1_STROBE  **********************************************Don not use when display "ON or USE"*************************
+#define D9      (23)//I/O GPIO23, VSPID, HS1_STROBE
 #define D10     (19)//I/O GPIO19, VSPIQ, U0CTS, EMAC_TXD0
-#define D11     (18)//I/O GPIO18, VSPICLK, HS1_DATA7 **********************************************Don not use when display "ON or USE"*************************
+#define D11     (18)//I/O GPIO18, VSPICLK, HS1_DATA7
 
 //-------------------------------------------------------------------
 // Analog to Digital Converter (Support 5V) 
@@ -83,6 +92,8 @@
 #define A3 /*ADC1_CH7 */  (35) //GPIO35, ADC1_CH7, RTC_GPIO5
 #define A4 /*ADC2_CH5 */  (15) //GPIO15, ADC2_CH3, TOUCH3, MTDO, HSPICS0, RTC_GPIO13, HS2_CMD,SD_CMD, EMAC_RXD3
 #define A5 /*ADC2_CH4 */  (13) //GPIO13, ADC2_CH4, TOUCH4, RTC_GPIO14, MTCK, HSPID, HS2_DATA3,SD_DATA3, EMAC_RX_ER
+#define LDR /*ADC2_CH6 */  (34) //GPIO34, ADC1_CH6, RTC_GPIO4 ***********************/////////////////////Connected LDR/////////////////////////////
+
 //-------------------------------------------------------------------
 
 //Digital to Analog Converter 
