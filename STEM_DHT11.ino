@@ -4,8 +4,10 @@
 
 
 
-#define DHTPIN D4  
-#define DHTTYPE DHT11 
+#define DHTPIN D4  // STEM DATA PIN D4
+
+#define DHTTYPE DHT11  // SENSOR TYPE DHT11 (VCC = 3.3 V or 5V)
+
 DHT dht(DHTPIN, DHTTYPE);
 
 struct temSensor
@@ -18,15 +20,18 @@ struct temSensor
 int externalTemSensor(struct temSensor dht11)
 {
     dht11.tem = dht.readTemperature();
+    Serial.print("Tem : \t");
     Serial.println(dht11.tem );
     dht11.hum = dht.readHumidity();
+    Serial.print("Hum : \t");
+    Serial.println(dht11.hum );
     dht11.temIndex= dht.computeHeatIndex(dht11.tem, dht11.hum, false);
-
+    Serial.print("Heat Index : \t");
+    Serial.println(dht11.temIndex );
     if (isnan(dht11.hum) || isnan(dht11.tem)) {
         Serial.println(F("Failed to read from DHT sensor!"));
         return false;
     }
-
     return true;
 }
 
@@ -39,13 +44,7 @@ void setup() {
 
 void loop() {
     struct temSensor dht11 ;
-    if(externalTemSensor(dht11))
-    {
-        Serial.println(dht11.hum);
-        Serial.println(dht11.tem);
-        Serial.println(dht11.temIndex);
-    }
-
+    externalTemSensor(dht11);
     delay(3000);
 
 }
