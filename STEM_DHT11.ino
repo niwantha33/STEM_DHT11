@@ -1,3 +1,10 @@
+// Cretaed by Niwantha Meepage for STEM Development Board.
+
+// REQUIRES the following Arduino libraries:
+// - DHT Sensor Library: https://github.com/adafruit/DHT-sensor-library
+// - Adafruit Unified Sensor Lib: https://github.com/adafruit/Adafruit_Sensor
+
+
 #include <Arduino.h>
 #include "stemhal.h"
 #include "DHT.h"
