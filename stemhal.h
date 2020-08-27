@@ -2,7 +2,7 @@
 // 
 // Jan 24
 
-h
+
 /*
  * Author             - Niwantha Meepage
  * Comapany           - Algobel Technologies & Innovations 
@@ -50,7 +50,7 @@ h
 #define CD  32
 #define CS  27
 #define RESET 33
-
+//Ucglib_ST7735_18x128x160_HWSPI ucg(/*cd=*/ CD, /*cs=*/ CS, /*reset=*/ RESET);
 
 #define LED_BUILTIN (0)// GPIO0, ADC2_CH1, TOUCH1, RTC_GPIO11, CLK_OUT1,EMAC_TX_CLK
 
